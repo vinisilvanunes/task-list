@@ -1,10 +1,13 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const TaskSchema = require('./TaskModel');
 
 const UserSchema = new mongoose.Schema({
     nome: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    isActived: {type: Boolean, default:true}
+    tasks: [TaskSchema],
+    isActived: {type: Boolean, default:true},
 })
 
 UserSchema.pre("save", async function (next){
@@ -14,4 +17,4 @@ UserSchema.pre("save", async function (next){
     next();
 })
 
-module.exports = mongoode.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema);
