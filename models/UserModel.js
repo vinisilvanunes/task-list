@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const TaskSchema = require('./TaskModel');
 
 const UserSchema = new mongoose.Schema({
     nome: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    tasks: [TaskSchema],
     isActived: {type: Boolean, default:true},
 })
 

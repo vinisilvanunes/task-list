@@ -7,7 +7,7 @@ const checkEmail = async (email) => {
     return user ? user : null
 }
 
-exports.registerUSer() = async(req, res)=>{
+exports.registerUser = async(req, res)=>{
     try{
         const {name, email, password} = req.body;
 
@@ -24,7 +24,7 @@ exports.registerUSer() = async(req, res)=>{
     }
 }
 
-exports.loginUser() = async(req, res) =>{
+exports.loginUser = async(req, res) =>{
     try{
        const { email, password } = req.body;
        
