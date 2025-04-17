@@ -11,6 +11,8 @@ exports.registerUser = async(req, res)=>{
     try{
         const {name, email, password} = req.body;
 
+        if (!name || !email || !password) return res.status(209).json({"message" : "Preencha todos os campos"})
+
         if(await checkEmail(email)){
             return res.status(400).json({"message" : "E-mail já cadastrado"});
         }
@@ -20,7 +22,7 @@ exports.registerUser = async(req, res)=>{
 
         res.status(201).json({"message":"Usuário cadastrado com sucesso"});
     }catch(e){
-        return res.status(500).json({"message": "Erro no banco de dados: ", e});
+        return res.status(500).json({"message": "Erro no banco de dados: " + e});
     }
 }
 
