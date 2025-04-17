@@ -20,7 +20,7 @@ exports.registerUser = async(req, res)=>{
 
         res.status(201).json({"message":"Usuário cadastrado com sucesso"});
     }catch(e){
-        return res.status(500).json({"message": "Erro no banco de dados"});
+        return res.status(500).json({"message": "Erro no banco de dados: ", e});
     }
 }
 
